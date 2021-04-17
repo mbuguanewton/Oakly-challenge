@@ -1,0 +1,39 @@
+{
+  "name": "my-razzle-app",
+  "version": "4.0.4",
+  "license": "MIT",
+  "scripts": {
+    "start": "razzle start",
+    "build": "razzle build",
+    "test": "razzle test --env=jsdom",
+    "start:prod": "NODE_ENV=production node build/server.js"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.5.1",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@fontsource/montserrat": "^4.2.2",
+    "@mongoosejs/double": "^0.2.0",
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "formik": "^2.2.6",
+    "framer-motion": "^4",
+    "mongoose": "^5.12.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-spinners": "^0.10.6",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "babel-preset-razzle": "4.0.4",
+    "html-webpack-plugin": "^4.5.2",
+    "mini-css-extract-plugin": "^0.9.0",
+    "razzle": "^4.0.4",
+    "razzle-dev-utils": "^4.0.4",
+    "webpack": "^4.44.1",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
