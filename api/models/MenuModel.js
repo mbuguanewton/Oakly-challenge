@@ -7,9 +7,15 @@ const MenuSchema = new mongoose.Schema({
         required: [true, 'name is required'],
         unique: true,
     },
+    
     price: {
         type: Double,
         required: true,
+    },
+
+    updated: {
+        type: Date,
+        default: Date.now,
     },
     created: {
         type: Date,
