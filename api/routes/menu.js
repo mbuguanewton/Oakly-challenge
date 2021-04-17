@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
 
         const item = await newMenu.save()
 
-        return res.status(201).send({ message: 'ok', item })
+        res.status(201).send({ message: 'ok', item })
     } catch (error) {
         res.status(400).send({
             message: error.message,
