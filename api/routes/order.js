@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { order } from '../models/OrderModel'
-// import { sendOrderConfirmation } from '../utils/atSms'
+import { sendOrderConfirmation } from '../utils/atSms'
 
 const router = Router()
 
@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
 
         const item = await newOrder.save()
 
-        // sendOrderConfirmation(item?.userPhoneNumber)
+        await sendOrderConfirmation(item.userPhoneNumber)
 
         res.status(201).send({ message: 'ok', item })
     } catch (error) {

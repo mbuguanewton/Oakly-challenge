@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import express from 'express'
 import cors from 'cors'
 import { menuRouter } from './routes/menu'
+import { orderRouter } from './routes/order'
 
 const mongoUri = process.env.RAZZLE_MONGO_URI
 
@@ -32,4 +33,5 @@ export function useServer(server) {
     server.use(express.json())
     server.use(cors(corsOptions))
     server.use('/api/menu', menuRouter)
+    server.use('/api/order', orderRouter)
 }
