@@ -1,25 +1,36 @@
 import React from 'react'
-import { Stack, Box } from '@chakra-ui/layout'
+import { Stack, Box, Image, Heading } from '@chakra-ui/react'
 import Navbar from '../components/common/Navbar'
-import { Heading } from '@chakra-ui/layout'
-import MenuList from '../components/MenuList'
+import MenuList from '../components/menu/MenuList'
 
 function Home() {
     return (
         <>
             <Navbar />
             <Box height='auto' width='100%' minHeight='90vh'>
-                <Box width='50%' height='auto' margin='1rem auto'>
+                <Box
+                    width={{ sm: '100%', md: '80%', lg: '70%', xl: '60%' }}
+                    p={['10px']}
+                    height='auto'
+                    margin='1rem auto'>
                     <Box
                         width='100%'
                         height='30vh'
                         as={Stack}
-                        p='20px'
                         direction='row'
                         alignItems='center'
                         borderRadius='10px'
                         border='2px solid #eee'
-                        justifyContent='space-between'></Box>
+                        justifyContent='space-between'>
+                        <Image
+                            src='/foodie.jpg'
+                            height='100%'
+                            width='100%'
+                            borderRadius='10px'
+                            objectPosition='top'
+                            objectFit='cover'
+                        />
+                    </Box>
                     <Box
                         width='100%'
                         height='auto'

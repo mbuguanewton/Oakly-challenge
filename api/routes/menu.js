@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
 
         const item = await newMenu.save()
 
-        res.status(201).send({ message: 'ok', item })
+        res.status(201).send({ message: 'ok', data: item })
     } catch (error) {
         res.status(400).send({
             message: error.message,
@@ -28,37 +28,13 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (_, res) => {
     try {
-        const items = await menu.find({}).sort({ created: 'asc' })
+        const items = await menu.find({}).sort({ created: 'desc' })
 
         if (items.length) {
             res.status(200).send({ message: 'ok', data: items })
         } else {
             res.status(200).send({ message: 'ok', data: [] })
         }
-    } catch (error) {
-        res.status(400).send({
-            message: error.message,
-        })
-    }
-})
-
-router.patch('/:id', async (req, res) => {
-    try {
-        const { id } = req.params
-        const data = req.body
-
-        const update = {
-            ...data,
-            updated: Date.now(),
-        }
-
-        const item = await menu.findByIdAndUpdate(
-            id,
-            { $set: update },
-            { new: true }
-        )
-
-        res.status(200).send({ message: 'ok', data: item })
     } catch (error) {
         res.status(400).send({
             message: error.message,
