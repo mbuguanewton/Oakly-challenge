@@ -4,6 +4,8 @@ import { StaticRouter } from 'react-router-dom'
 import express from 'express'
 import { renderToString } from 'react-dom/server'
 import { useServer } from '../api/useServer'
+import { ChakraProvider } from '@chakra-ui/react'
+import { theme } from './utils/theme'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
@@ -38,16 +40,18 @@ server
     .get('/*', (req, res) => {
         const context = {}
         const markup = renderToString(
-            <StaticRouter context={context} location={req.url}>
-                <App />
-            </StaticRouter>
+            <ChakraProvider theme={theme}>
+                <StaticRouter context={context} location={req.url}>
+                    <App />
+                </StaticRouter>
+            </ChakraProvider>
         )
 
         if (context.url) {
             res.redirect(context.url)
         } else {
             res.status(200).send(
-                `<!doctype html>
+    `<!doctype html>
     <html lang="en">
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -61,7 +65,7 @@ server
         <div id="root">${markup}</div>
         ${jsScriptTagsFromAssets(assets, 'client', ' defer crossorigin')}
     </body>
-</html>`
+    </html>`
             )
         }
     })
